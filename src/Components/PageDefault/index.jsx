@@ -1,13 +1,16 @@
 import React from "react";
 
-// import { Container } from './styles';
+import { Container, Header, MainContent } from "./styles";
+import Logo from "../../Assests/icons/logo.png";
 
 function PageDefault({ children }) {
   return (
-    <div>
-      <h1>Header</h1>
-      {children}
-    </div>
+    <Container>
+      <Header>
+        <img src={Logo} alt="logo" />
+      </Header>
+      <MainContent>{children}</MainContent>
+    </Container>
   );
 }
 
