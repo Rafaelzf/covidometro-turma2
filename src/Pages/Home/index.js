@@ -1,4 +1,4 @@
-import { PageDefault } from "../../Components";
+import { PageDefault, Filter } from "../../Components";
 
 import { Container, Presentation, MainText, Main } from "./styles";
 
@@ -18,7 +18,7 @@ function App() {
           </MainText>
         </Presentation>
         <Main>
-          <h1>Filtro</h1>
+          <Filter />
         </Main>
       </Container>
     </PageDefault>

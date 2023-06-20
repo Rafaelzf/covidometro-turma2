@@ -24,7 +24,6 @@ const MainText = styled.div`
 const Main = styled.main`
   width: 70%;
   margin: -100px auto 0;
-  border: 1px solid red;
 `;
 
 export { Container, Presentation, MainText, Main };
