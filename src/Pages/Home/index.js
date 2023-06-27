@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { PageDefault, Filter, Nations } from "../../Components";
+import { PageDefault, Filter, Nations, BoxDefault } from "../../Components";
 import { baseUrl } from "../../Connections";
 import { useQuery } from "react-query";
 
@@ -12,9 +13,17 @@ import {
 } from "./styles";
 
 function App() {
+  const [countries, setContries] = useState([]);
+
   const { isLoading, data, error } = useQuery("data", () =>
     axios.get(`${baseUrl}countries`)
   );
+
+  useEffect(() => {
+    if (data?.data.data) {
+      setContries(data.data.data);
+    }
+  }, [data?.data.data]);
 
   return (
     <PageDefault>
@@ -31,10 +40,24 @@ function App() {
           </MainText>
         </Presentation>
         <Main>
-          <ContainerBoxes>
-            <Filter />
-            <Nations />
-          </ContainerBoxes>
+          {isLoading && <BoxDefault>Loading...</BoxDefault>}
+
+          {!isLoading && error ? (
+            <BoxDefault>
+              💢 Infelizmente houve algum erro inexperado. Volte mais tarde. ⛔️
+            </BoxDefault>
+          ) : (
+            !isLoading &&
+            countries && (
+              <ContainerBoxes>
+                <Filter />
+                {countries.length &&
+                  countries.map((country) => (
+                    <Nations key={country.country} {...country} />
+                  ))}
+              </ContainerBoxes>
+            )
+          )}
         </Main>
       </Container>
     </PageDefault>
