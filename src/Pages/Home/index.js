@@ -1,4 +1,7 @@
+import axios from "axios";
 import { PageDefault, Filter, Nations } from "../../Components";
+import { baseUrl } from "../../Connections";
+import { useQuery } from "react-query";
 
 import {
   Container,
@@ -9,6 +12,10 @@ import {
 } from "./styles";
 
 function App() {
+  const { isLoading, data, error } = useQuery("data", () =>
+    axios.get(`${baseUrl}countries`)
+  );
+
   return (
     <PageDefault>
       <Container>
