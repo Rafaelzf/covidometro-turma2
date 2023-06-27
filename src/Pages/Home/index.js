@@ -1,6 +1,12 @@
-import { PageDefault, Filter } from "../../Components";
+import { PageDefault, Filter, Nations } from "../../Components";
 
-import { Container, Presentation, MainText, Main } from "./styles";
+import {
+  Container,
+  Presentation,
+  MainText,
+  Main,
+  ContainerBoxes,
+} from "./styles";
 
 function App() {
   return (
@@ -18,7 +24,10 @@ function App() {
           </MainText>
         </Presentation>
         <Main>
-          <Filter />
+          <ContainerBoxes>
+            <Filter />
+            <Nations />
+          </ContainerBoxes>
         </Main>
       </Container>
     </PageDefault>

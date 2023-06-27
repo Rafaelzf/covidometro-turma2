@@ -26,4 +26,10 @@ const Main = styled.main`
   margin: -100px auto 0;
 `;
 
+export const ContainerBoxes = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+`;
+
 export { Container, Presentation, MainText, Main };
